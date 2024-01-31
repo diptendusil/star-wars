@@ -1,0 +1,13 @@
+.myContainer {
+  height: 600px;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 767px) {
+  .myContainer {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+    width: auto !important;
+  }
+}
