@@ -23,4 +23,10 @@ Open ```http://localhost:4000/home``` on your browser.
 
 ## Testing
 
-Will be updated
+### Unit tests
+
+To run the unit tests, execute ```npm run test:unit```
+
+### E2E tests
+
+Coming soon
