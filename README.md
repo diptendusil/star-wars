@@ -12,7 +12,7 @@
 ### Setup
 
 ```bash
-- git clone sdfsdff
+- git clone https://github.com/diptendusil/star-wars.git
 - cd star-wars
 - npm install
 - npm run build
