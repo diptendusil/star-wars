@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from 'react'
 import { Button, Stack } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -34,7 +35,7 @@ const Home = () => {
         }
         addToCharacterList(res.results)
         setIsLoading(false)
-      }).catch((_err) => {
+      }).catch(() => {
         console.log('Failed to load data')
         setIsLoading(false)
       })
@@ -45,13 +46,13 @@ const Home = () => {
   }, [page])
 
   const list = useMemo(() => {
-    let listArr: any[] = []
+    let listArr: JSX.Element[] = []
     const startIndex = (page - 1) * 10
     for (let index = startIndex; index < startIndex + 10; index++) {
       if (index === characters.length) break
       const char = characters[index]
       listArr = listArr.concat(
-        <Link className="list-group-item list-group-item-action transluscentBody" to={`/character/${index + 1}`}>
+        <Link key={`${char.name}-${index}`} className="list-group-item list-group-item-action transluscentBody" to={`/character/${index + 1}`}>
           <ListItem name={char?.name} gender={char?.gender} homeworld={char?.homeworld} />
         </Link>
       )
@@ -60,10 +61,10 @@ const Home = () => {
   }, [page, characterCount, isLoading])
 
   const placeholderList = useMemo(() => {
-    let listArr: any[] = []
+    let listArr: JSX.Element[] = []
     for (let index = 0; index < 7; index++) {
       listArr = listArr.concat(
-        <a className="list-group-item list-group-item-action transluscentBody" aria-disabled="true">
+        <a key={`placeholder-${index}`} className="list-group-item list-group-item-action transluscentBody" aria-disabled="true">
           <div className="placeholder-glow"><span className="placeholder col-3" /></div>
           <div className="placeholder-glow"><span className="placeholder col-2" /></div>
           <div className="placeholder-glow"><span className="placeholder col-4" /></div>

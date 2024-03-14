@@ -13,11 +13,11 @@ const ListItem = (props: Character) => {
   const [planet, setPlanet] = useState(<Spinner animation="border" size="sm" />)
   const planetUrlArr = homeworld.split('/')
   const id = planetUrlArr[planetUrlArr.length - 2]
-  const planetObj: any = {}
+  const planetObj: dictionary = {}
 
   useEffect(() => {
     if (!id) setPlanet(<span>'N/A'</span>)
-    else if (id && planets[id]) setPlanet(planets[id])
+    else if (id && planets[id]) setPlanet(<span>{planets[id]}</span>)
     else {
       getPlanet(id).then((res) => {
         planetObj[id] = res.name

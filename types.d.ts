@@ -15,3 +15,5 @@ type CharacterList = {
   previous: string
   results: Character[]
 }
+
+type dictionary = { [key: string | number]: string }

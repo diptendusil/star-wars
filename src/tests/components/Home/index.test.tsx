@@ -4,20 +4,20 @@ import { characters as characterArr, planets } from '../../constants'
 import Home from '../../../components/Home'
 
 jest.mock('react-router-dom', () => ({
-  Link: 'Link'
+  Link: ({ children }: { children: JSX.Element }) => <a>{children}</a>
 }))
 
 jest.mock('../../../utils/fetchUtils', () => ({
-  getPlanet: jest.fn((id: string) => Promise.resolve<{ name: string }>({ name: (planets as any)[id] })),
-  getAllCharacters: jest.fn((page: number) => Promise.resolve<CharacterList>((characterArr as any)[page.toString()])),
+  getPlanet: jest.fn((id: string) => Promise.resolve<{ name: string }>({ name: (planets as dictionary)[id] })),
+  getAllCharacters: jest.fn((page: number) => Promise.resolve<CharacterList>((characterArr as never)[page.toString()])),
 }))
 
 jest.mock('../../../store', () => ({
   useStore: jest.fn(() => {
-    let planets = {}, characterCount = 11, characters: Character[] = characterArr['1'].results.concat(characterArr['2'].results)
-    const addPlanet = (_planet: any) => null
-    const updateCharacterCount = (_count: number) => null
-    const addToCharacterList = (_character: Character) => null
+    const planets = {}, characterCount = 11, characters: Character[] = characterArr['1'].results.concat(characterArr['2'].results)
+    const addPlanet = () => null
+    const updateCharacterCount = () => null
+    const addToCharacterList = () => null
     return { planets, characterCount, characters, addPlanet, updateCharacterCount, addToCharacterList }
   })
 }))

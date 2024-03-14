@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
 import Home from './components/Home'
 import CharacterPage from './components/CharacterPage'
 import './styles/styles.scss'
@@ -12,6 +12,7 @@ function App() {
       </div>
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<Navigate to='/home' />} />
           <Route path='/home' element={<Home />} />
           <Route path='/character/:id' element={<CharacterPage />} />
         </Routes>

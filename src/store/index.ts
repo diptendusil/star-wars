@@ -3,13 +3,13 @@ import { create } from 'zustand'
 interface StoreType {
   characterCount: number
   characters: Character[]
-  planets: any
-  movies: any
+  planets: dictionary
+  movies: dictionary
   updateCharacterCount: (count: number) => void
   updateCharacterList: (characters: Character[]) => void
   addToCharacterList: (characters: Character[]) => void
-  addPlanet: (planet: any) => void
-  addMovie: (movie: any) => void
+  addPlanet: (planet: dictionary) => void
+  addMovie: (movie: dictionary) => void
 }
 
 export const useStore = create<StoreType>((set) => ({
@@ -20,6 +20,6 @@ export const useStore = create<StoreType>((set) => ({
   updateCharacterCount: (count) => set({ characterCount: count }),
   updateCharacterList: (characters: Character[]) => set({ characters: [ ...characters ] }),
   addToCharacterList: (characters: Character[]) => set((state) => ({ characters: state.characters.concat(characters)})),
-  addPlanet: (planet: any) => set((state) => ({ planets: { ...state.planets, ...planet } })),
-  addMovie: (movie: any) => set((state) => ({ movies: { ...state.movies, ...movie } })),
+  addPlanet: (planet: dictionary) => set((state) => ({ planets: { ...state.planets, ...planet } })),
+  addMovie: (movie: dictionary) => set((state) => ({ movies: { ...state.movies, ...movie } })),
 }))

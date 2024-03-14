@@ -26,7 +26,7 @@ const CharacterPage = () => {
     ...character
   } = characters[(+id) - 1] || {}
   const planetId = homeworld.split('/')[homeworld.split('/').length - 2]
-  const tempFilms: any = {}
+  const tempFilms: dictionary = {}
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       gender: character.gender,
@@ -167,7 +167,7 @@ const CharacterPage = () => {
               </div>
               {!isLoading ? localMovies.map((film) => {
                 return (
-                  <div className="d-flex justify-content-center align-items-center col-xs-12">
+                  <div key={film} className="d-flex justify-content-center align-items-center col-xs-12">
                     <span>{film}</span>
                   </div>
                 )

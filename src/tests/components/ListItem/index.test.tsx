@@ -4,13 +4,13 @@ import { planets } from '../../constants'
 import ListItem from '../../../components/ListItem'
 
 jest.mock('../../../utils/fetchUtils', () => ({
-  getPlanet: jest.fn((id: string) => Promise.resolve<{ name: string }>({ name: (planets as any)[id] }))
+  getPlanet: jest.fn((id: string) => Promise.resolve<{ name: string }>({ name: (planets as dictionary)[id] }))
 }))
 
 jest.mock('../../../store', () => ({
   useStore: jest.fn(() => {
     let planets = {}
-    const addPlanet = (planet: any) => planets = { ...planets, ...planet }
+    const addPlanet = (planet: dictionary) => planets = { ...planets, ...planet }
     return { planets, addPlanet }
   })
 }))
